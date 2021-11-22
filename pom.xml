@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.myai.tech.wfz</groupId>
+    <artifactId>flink-MyTest</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>flink-1.12.4-research</module>
+        <module>flink-1.10.1-research</module>
+        <module>flink-1.13.3-research</module>
+    </modules>
+
+
+    <properties>
+        <!--<flink.version>1.10.1</flink.version>-->
+        <flink.version>1.12.4</flink.version>
+        <lombok.version>1.18.12</lombok.version>
+        <fastJson.version>1.2.61</fastJson.version>
+        <kafka.version>2.2.0</kafka.version>
+        <!--<kafka.version>1.1.0</kafka.version>-->
+        <mysql.version>8.0.15</mysql.version>
+        <hadoop.version>2.7.2</hadoop.version>
+        <druid.version>1.1.20</druid.version>
+        <http.version>4.5.13</http.version>
+
+    </properties>
+
+    <dependencies>
+
+    </dependencies>
+
+
+</project>
