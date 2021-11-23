@@ -1,9 +1,14 @@
 package com.wfz.utils;
 
 import com.wfz.configs.ConnectConfig;
+import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.contrib.streaming.state.RocksDBStateBackend;
 import org.apache.flink.streaming.api.CheckpointingMode;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer;
+import org.apache.kafka.clients.consumer.ConsumerConfig;
+
+import java.util.Properties;
 
 public class FlinkUtils {
 
@@ -28,5 +33,17 @@ public class FlinkUtils {
         }
         return env;
 
+    }
+    public static FlinkKafkaConsumer<String> getKafkaConsumerExctyOnce(String bootstrap, String groupId, String topicName) {
+
+        KafkaUtils kafkaUtils = new KafkaUtils(bootstrap, groupId);
+        Properties props = kafkaUtils.getProps();
+        props.put(ConsumerConfig.ISOLATION_LEVEL_CONFIG, "read_committed");
+        FlinkKafkaConsumer<String> kafkaSource = new FlinkKafkaConsumer<>(topicName, new SimpleStringSchema(), props);
+        kafkaSource.setCommitOffsetsOnCheckpoints(true);
+//        kafkaSource.setStartFromLatest();
+//        kafkaSource.setStartFromEarliest();
+//        kafkaSource.setStartFromGroupOffsets();
+        return kafkaSource;
     }
 }
